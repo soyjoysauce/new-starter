@@ -1,0 +1,467 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
+.blue {
+  background-color: #09a1ff; }
+
+.red {
+  background-color: #cd1c1c; }
+
+.yellow {
+  background-color: #fcff2f; }
+
+.green {
+  background-color: #54ff2a; }
+
+.white {
+  background-color: #fff; }
+
+.black {
+  background-color: #000; }
+
+.grey-dark {
+  background-color: #777; }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+body {
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media only screen and (max-width: 56.25em) {
+    body {
+      padding: 0; } }
+
+::selection {
+  background-color: #333;
+  color: #fff; }
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'pokeFontR' , sans-serif;
+  font-weight: 400;
+  line-height: 1.7; }
+
+@font-face {
+  font-family: 'pokeFontR';
+  src: url("../../fonts/Pokemon_Solid.ttf") format("truetype"); }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+      animation-delay: 3s;
+      animation-iteration-count: 3;
+      */ }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-family: 5rem; } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .5rem; } }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ED56F, #28B485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  @media only screen and (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center !important; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 5rem !important; } }
+
+.u-margin-top-big {
+  margin-top: 8rem !important; }
+
+.u-margin-top-huge {
+  margin-top: 10rem !important; }
+
+header#mainNav {
+  grid-area: header;
+  grid-column: col-1start / col1-end;
+  grid-row: row1-start / row1-end; }
+
+div#pokeDex {
+  width: 45em;
+  height: 70em;
+  display: grid;
+  grid-template-columns: [col1-start] auto [col1-end col2-start] auto [col2-end];
+  grid-template-rows: [row1-start] 10em [row1-end row2-start] auto [row2-end];
+  grid-auto-rows: 0;
+  grid-auto-columns: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  position: relative;
+  -webkit-perspective: 800em;
+  -moz-perspective: 800em;
+  -o-perspective: 800em;
+  perspective: 800em; }
+
+div.topCover {
+  display: flex;
+  grid-column: col1-start / col1-end;
+  grid-row: row1-start / row1-end;
+  z-index: 600; }
+
+div.backCoverBox {
+  grid-column: col1-start / col1-end;
+  grid-row: row1-start / row2-end; }
+
+div.frontRedCover {
+  width: 100%;
+  grid-column: col1-start / col1-end;
+  grid-row: row1-end / row2end; }
+
+div.frontRedCover {
+  height: 63.5em; }
+
+div.innerCover {
+  grid-column: col1-start / col1-end;
+  grid-row: row1-end / row2end; }
+
+div.innerCover.flipped {
+  grid-column: col2-start / col2-end;
+  grid-row: row1-end / row2end; }
+
+.button {
+  background-color: orange;
+  width: 125px;
+  height: 125px;
+  border: 2px solid blue;
+  font-size: 16px; }
+  .button-medium {
+    width: 150px;
+    height: 150px;
+    font-size: 30px; }
+  .button-red {
+    background-color: red; }
+
+#front-cover .frontRedCover,
+#front-cover .innerCover {
+  width: 100%;
+  transform-style: preserve-3d;
+  transform-origin: right center; }
+
+#front-cover .frontRedCover {
+  background-color: #cd1c1c;
+  clip-path: polygon(62% 0, 100% 0, 100% 100%, 0 100%, 0 13%, 53% 13%);
+  transition: transform 1s; }
+
+#front-cover .innerCover {
+  height: auto;
+  width: 45em;
+  transition: transform 0s;
+  visibility: hidden;
+  padding: 1em; }
+
+#front-cover .innerCover.visible {
+  animation: visible 2s forwards; }
+
+#front-cover .innerCover.hidden {
+  animation: hideen 2s forwards; }
+
+@keyframes visible {
+  0% {
+    visibility: hidden; }
+  10% {
+    visibility: hidden; }
+  100% {
+    visibility: visible; } }
+
+@keyframes hidden {
+  0% {
+    visibility: visible; }
+  100% {
+    visibility: hidden; } }
+
+#front-cover .frontRedCover.flipped-open {
+  transform-origin: right;
+  animation: flipped-open 1s forwards; }
+
+@keyframes flipped-open {
+  0% {
+    transform: rotateY(0); }
+  100% {
+    transform: rotateY(180deg); } }
+
+#front-cover .frontRedCover.flipped {
+  height: 63.5em; }
+
+#front-cover .rightTriangle {
+  width: 0;
+  height: 0;
+  border-top: 1em solid transparent;
+  border-left: 2em solid #555;
+  border-bottom: 1em solid transparent;
+  position: absolute;
+  transform: translate(1em, 15em); }
+
+#front-cover .frontRedCover > ul.pDSpine {
+  display: inline-grid;
+  width: 1em;
+  height: inherit;
+  float: right;
+  list-style-type: none; }
+
+#front-cover .frontRedCover > ul.pDSpine > li {
+  border: 1px solid black; }
+
+#front-cover .innerCover {
+  background-color: #cd1c1c;
+  vertical-align: top; }
+
+#front-cover .innerBtnBx.flipped {
+  padding: 0em 1em 1em; }
+
+#front-cover .textBox {
+  min-width: 40em;
+  height: 35em;
+  background-color: grey;
+  display: flex;
+  margin: 5em 0em 2em; }
+
+#front-cover .btnRw1 {
+  text-align: center; }
+
+#front-cover ul.gridBtnBx {
+  width: 24em;
+  height: auto;
+  display: inline-block;
+  list-style-type: none; }
+
+#front-cover li.gridBtn {
+  width: 5em;
+  height: 2em;
+  display: inline-flex; }
+
+#front-cover .bottomBtn {
+  display: inline-block; }
+
+#front-cover ul.twoBtn {
+  display: inline-block; }
+
+#front-cover ul.twoBtn > li.circle.btn.yellow {
+  display: inline-flex;
+  margin: .5em 1em 0em 2em;
+  font-size: 2em; }
+
+#front-cover ul.twoBtn.grey {
+  margin-top: 1em; }
+
+div.backCoverBox {
+  width: inherit;
+  height: inherit;
+  background-color: #cd1c1c; }
+
+div.mainPokeDex {
+  width: auto;
+  height: 55em;
+  margin: 11em 0em 0em; }
+
+div#spriteScreen {
+  background-color: lightblue;
+  width: 42em;
+  height: 42em;
+  text-align: center;
+  margin: 1em auto 2em; }
+
+div.weightType {
+  width: 30em;
+  height: 10em;
+  background-color: grey;
+  display: inline-block;
+  margin: 1em 2em; }
+
+div.fourDirectional {
+  position: absolute;
+  z-index: -600;
+  clip-path: polygon(0% 30%, 30% 30%, 30% 0%, 70% 0%, 70% 30%, 100% 30%, 100% 70%, 70% 70%, 70% 100%, 30% 100%, 30% 70%, 0% 70%);
+  width: 8em;
+  height: 8em;
+  background-color: grey;
+  display: inline-block;
+  /* margin-bottom: 2em; */
+  /* margin-left: 1em; */ }
+
+div.fourDirectional.flipped {
+  z-index: 0;
+  right: 1em;
+  margin: 2em; }
+
+div.mainPokeDex > div.pDSpine {
+  display: inline-grid;
+  width: 1em;
+  height: inherit;
+  float: right;
+  list-style-type: none; }
+
+div.mainPokeDex > div.pDSpine > span {
+  border: 1px solid black; }
+
+#PoGo-Dex-title {
+  text-align: center;
+  padding-right: 1em; }
+
+ul.navBarBox {
+  display: inline-flex; }
+
+li.navBtn {
+  list-style: none;
+  margin: auto;
+  padding: 0em .5em; }
+
+.btn {
+  width: 1em;
+  height: 1em; }
+
+.circle {
+  border-radius: 3em; }
+
+div.topCover {
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em; }
+
+div.topCover > span.btn {
+  border: 4px solid #000;
+  width: 2em;
+  height: 2em; }
+
+div.topCover > span.btn.blue {
+  width: 6em;
+  height: 6em;
+  margin-right: 2em;
+  font-size: 1.5em; }
+
+div.topCover > span.btn.red,
+div.topCover > span.btn.yellow,
+div.topCover > span.btn.green {
+  margin-right: 0.5em; }
